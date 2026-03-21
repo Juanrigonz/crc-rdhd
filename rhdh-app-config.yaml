@@ -1,0 +1,77 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: rhdh-app-config
+  namespace: rhdh-operator
+  labels:
+    rhdh.redhat.com/ext-config-sync: 'true'
+  annotations:
+    rhdh.redhat.com/backstage-name: developer-hub
+data:
+  app-config.yaml: |
+    app:
+      title: Frmacias Guadalajara
+      baseUrl: https://backstage-developer-hub-rhdh-operator.apps-crc.testing
+    auth:
+      providers:
+        oidc:
+          production:
+            metadataUrl: ${AUTH_OIDC_METADATA_URL}
+            clientId: ${AUTH_OIDC_CLIENT_ID}
+            clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
+            signIn:
+              rerolvers:
+                - resolver: emailMatchingUserEntityProfileEmail
+                - resolver: preferredUsernameMatchingUserEntityName
+                - resolver: emailLocalPartMatchingUserEntityName
+    signInPage: oidc
+    backend:
+      csp:
+        connect-src:
+        - '''self'''
+        - 'http:'
+        - 'https:'
+        - 'data:'
+        img-src:
+        - '''self'''
+        - 'data:'
+        - 'https://cdn.worldvectorlogo.com'
+        script-src:
+        - '''self'''
+        - '''unsafe-inline'''
+        - '''unsafe-eval'''
+        script-src-elem:
+        - '''self'''
+        - '''unsafe-inline'''
+        - '''unsafe-eval'''
+      auth:
+        externalAccess:
+        - options:
+            secret: pl4s3Ch4ng3M3
+            subject: legacy-default-config
+          type: legacy
+      baseUrl: https://backstage-developer-hub-rhdh-operator.apps-crc.testing
+      cors:
+        origin: https://backstage-developer-hub-rhdh-operator.apps-crc.testing
+        credentials: true
+    catalog:
+      locations:
+        - rules:
+          - allow:
+            - Resource
+          target: https://gitlab.com/banreservas1/proyectos-banreservas/hcs-banreservas/developer-hub-template/developerhub/-/blob/main/clusters-resource.yaml
+          type: url
+      providers:
+        keycloakOrg:
+          default:
+            realm: ${OIDC_KEYCLOAK_REALM}
+            loginRealm: ${OIDC_KEYCLOAK_REALM}
+            baseUrl: ${OIDC_BASE_KEYCLOAK_URL}
+            clientId: ${AUTH_OIDC_CLIENT_ID}
+            clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
+            schedule:
+              frequency: { minutes: 1 }
+              timeout: { minutes: 1 }
+              initialDelay: { seconds: 15 }
+            userTransformer: sanitizeEmailTransformer
+          

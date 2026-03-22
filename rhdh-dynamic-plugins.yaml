@@ -32,6 +32,8 @@ data:
         disabled: false
       - package: ./dynamic-plugins/dist/backstage-community-plugin-topology
         disabled: false
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-azure-devops:{{inherit}}'
-        dissbled: false
-      - package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-azure-devops-backend:{{inherit}}'
+      #- package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-azure-devops:{{inherit}}'
+      #  disabled: false
+      #- package: 'oci://ghcr.io/redhat-developer/rhdh-plugin-export-overlays/backstage-community-plugin-azure-devops-backend:{{inherit}}'
+      #  disabled: false
+

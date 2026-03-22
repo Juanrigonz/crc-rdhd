@@ -10,20 +10,25 @@ metadata:
 data:
   app-config.yaml: |
     app:
-      title: Frmacias Guadalajara
-      baseUrl: https://backstage-developer-hub-rhdh-operator.apps-crc.testing
+      title: Farmacias de Guadalajara
+      baseUrl: https://developerhub.apps-crc.testing/
     auth:
+      environment: development
+      session:
+        secret: ${AUTH_SESSION_SECRET}
       providers:
+        # guest:
+        #   dangerouslyAllowOutsideDevelopment: true
         oidc:
-          production:
-            metadataUrl: ${AUTH_OIDC_METADATA_URL}
+          development:
+            metadataUrl: ${OIDC_BASE_KEYCLOAK_URL}/realms/${OIDC_KEYCLOAK_REALM}/.well-known/openid-configuration
             clientId: ${AUTH_OIDC_CLIENT_ID}
             clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
+            prompt: auto
+            dangerouslyAllowSignInWithoutUserInCatalog: true
             signIn:
-              rerolvers:
-                - resolver: emailMatchingUserEntityProfileEmail
+              resolvers:
                 - resolver: preferredUsernameMatchingUserEntityName
-                - resolver: emailLocalPartMatchingUserEntityName
     signInPage: oidc
     backend:
       csp:
@@ -50,16 +55,15 @@ data:
             secret: pl4s3Ch4ng3M3
             subject: legacy-default-config
           type: legacy
-      baseUrl: https://backstage-developer-hub-rhdh-operator.apps-crc.testing
+      baseUrl: https://developerhub.apps-crc.testing/
       cors:
-        origin: https://backstage-developer-hub-rhdh-operator.apps-crc.testing
-        credentials: true
+        origin: https://developerhub.apps-crc.testing/
     catalog:
       locations:
         - rules:
           - allow:
             - Resource
-          target: https://gitlab.com/banreservas1/proyectos-banreservas/hcs-banreservas/developer-hub-template/developerhub/-/blob/main/clusters-resource.yaml
+          target: https://github.com/redhat-developer/red-hat-developer-hub-software-templates/blob/main/templates/github/argocd/template.yaml
           type: url
       providers:
         keycloakOrg:

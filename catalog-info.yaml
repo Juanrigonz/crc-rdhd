@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: anomaly-detection
+  identifier: anomaly-detection
+  description: CCM anomaly detection backend service
+  annotations:
+    github.com/project-slug: juanrigonz/crc-rdhd
+spec:
+  type: service
+  owner: group:ccmplayacc
+  lifecycle: production
+  dependsOn:
+    - component:ng-manager

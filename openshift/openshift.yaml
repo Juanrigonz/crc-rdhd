@@ -18,6 +18,13 @@ spec:
       - name: hello-openshift
         # Imagen oficial de ejemplo para OpenShift
         image: quay.io/juangonz/support-tools-jq:1.0.0
+        command:
+          - /bin/sh
+          - '-c'
+          - |
+          cp /scripts/update-users.sh /tmp/update-users.sh
+          chmod +x /tmp/update-users.sh
+          /tmp/update-users.sh
         ports:
         - containerPort: 8080
 ---

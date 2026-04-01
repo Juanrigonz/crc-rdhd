@@ -6,6 +6,7 @@ metadata:
   description: CCM anomaly detection backend service
   annotations:
     github.com/project-slug: juanrigonz/crc-rdhd
+    argocd/app-name: 'hello'
 spec:
   type: service
   owner: group:ccmplayacc

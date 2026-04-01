@@ -22,9 +22,6 @@ spec:
           - /bin/sh
           - '-c'
           - |
-          cp /scripts/update-users.sh /tmp/update-users.sh
-          chmod +x /tmp/update-users.sh
-          /tmp/update-users.sh
         ports:
         - containerPort: 8080
 ---

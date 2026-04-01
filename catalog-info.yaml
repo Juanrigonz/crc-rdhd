@@ -9,7 +9,5 @@ metadata:
     argocd/app-name: 'hello'
 spec:
   type: service
-  owner: group:ccmplayacc
-  lifecycle: production
-  dependsOn:
-    - component:ng-manager
+  owner: group:guest
+  lifecycle: experimental

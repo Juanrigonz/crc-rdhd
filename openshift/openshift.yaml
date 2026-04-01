@@ -17,7 +17,7 @@ spec:
       containers:
       - name: hello-openshift
         # Imagen oficial de ejemplo para OpenShift
-        image: quay.io/juangonz/support-tools-jq:latest
+        image: quay.io/juangonz/support-tools-jq:1.0.0
         ports:
         - containerPort: 8080
 ---

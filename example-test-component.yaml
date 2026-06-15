@@ -7,7 +7,8 @@ metadata:
     # Use these annotations to test integrations (e.g., Tekton, Topology)
     backstage.io/techdocs-ref: dir:.
     # Example: link to a git repository
-    ://github.com: example/rhdh-plugin-tester
+    github.com/project-slug: "Juanrigonz/crc-rhdh" 
+    backstage.io/source-location: "url:https://github.com/my-org/my-repo"
     # Example: if testing a CI/CD plugin, map to your pipeline system
     # tekton.dev/pipelines: "my-pipeline-run"
 spec:

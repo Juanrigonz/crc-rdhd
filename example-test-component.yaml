@@ -1,0 +1,17 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: rhdh-plugin-tester
+  description: Example component to test Red Hat Developer Hub plugins.
+  annotations:
+    # Use these annotations to test integrations (e.g., Tekton, Topology)
+    backstage.io/techdocs-ref: dir:.
+    # Example: link to a git repository
+    ://github.com: example/rhdh-plugin-tester
+    # Example: if testing a CI/CD plugin, map to your pipeline system
+    # tekton.dev/pipelines: "my-pipeline-run"
+spec:
+  type: service
+  lifecycle: experimental
+  owner: platform-engineering
+  system: test-environment

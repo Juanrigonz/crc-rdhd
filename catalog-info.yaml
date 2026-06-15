@@ -1,12 +1,18 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: anomaly-detection
-  description: CCM anomaly detection backend service
+  name: rhdh-plugin-tester
+  description: Example component to test Red Hat Developer Hub plugins.
   annotations:
-    github.com/project-slug: juanrigonz/crc-rdhd
-    argocd/app-name: 'hello'
+    # Use these annotations to test integrations (e.g., Tekton, Topology)
+    backstage.io/techdocs-ref: dir:.
+    # Example: link to a git repository
+    github.com/project-slug: "Juanrigonz/crc-rhdh" 
+    backstage.io/source-location: "url:https://github.com/my-org/my-repo"
+    # Example: if testing a CI/CD plugin, map to your pipeline system
+    # tekton.dev/pipelines: "my-pipeline-run"
 spec:
   type: service
-  owner: group:guest
   lifecycle: experimental
+  owner: guest
+  system: test-environment
